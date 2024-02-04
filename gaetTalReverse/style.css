@@ -1,0 +1,79 @@
+/* global.css - setting a foundation with a minimalist and modern theme */
+* {
+    font-family:'Poppins', sans-serif;
+}
+:root {
+    --primary-color: #e90ee5; 
+    --accent-color: #f046bd; 
+    --background-color: #f6d1ff2d; 
+    --text-color: #000000; 
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1rem;
+    color: var(--text-color);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    border: 0;
+    padding: 15px 30px;
+    margin: 10px;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: lighten(var(--primary-color), 10%);
+    transform: translateY(-2px);
+}
+
+button#correct {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+
+}
+
+button#lower, button#higher {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+/* Responsive Design Tweaks */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem; /* Adjusting for smaller screens */
+    }
+    button {
+        padding: 10px 20px; /* Smaller buttons on mobile */
+    }
+}
