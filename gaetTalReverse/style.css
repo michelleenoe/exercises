@@ -1,4 +1,4 @@
-/* global.css - setting a foundation with a minimalist and modern theme */
+
 * {
     font-family:'Poppins', sans-serif;
 }
@@ -68,12 +68,12 @@ button#lower, button#higher {
     color: var(--text-color);
 }
 
-/* Responsive Design Tweaks */
+
 @media (max-width: 768px) {
     h1 {
-        font-size: 1.8rem; /* Adjusting for smaller screens */
+        font-size: 1.8rem; 
     }
     button {
-        padding: 10px 20px; /* Smaller buttons on mobile */
+        padding: 10px 20px; 
     }
 }
