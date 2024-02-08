@@ -4,12 +4,14 @@ const texts = {
     texts: [
       { text: "Das Bot", location: ".header" },
       { text: "Das Ro-Bot", location: ".footer" },
+      {text: "her comes das indhold - ich bin ein berliner danke", location: ".content-section"}
     ],
   },
   da: {
     texts: [
       { text: "Båden", location: ".header" },
       { text: "Robotten", location: ".footer" },
+      {text: "her kommer indholdet - forhåbentligt", location: ".content-section",  },
     ],
   },
 };
