@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         li.style.setProperty('--height', customerCount);
         li.style.background = `color-mix(in hsl, red, green ${customerCount}%)`;
         list.appendChild(li);
-        if (list.children.length > maxValues) {
+        if (list.children.length > maxValues) //.shift 
+         {
             list.removeChild(list.firstElementChild);
         }
     };
