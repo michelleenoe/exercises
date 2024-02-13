@@ -55,8 +55,7 @@ function prepareObjects( jsonData ) {
         animal.name = name;
         animal.desc = desc;
         animal.type = type;
-
-        animal.age = json.Object.age;
+        animal.age = jsonObject.age;
         //add the object to the global array
         allAnimals.push(animal);
     });
