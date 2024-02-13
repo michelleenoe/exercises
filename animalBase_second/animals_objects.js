@@ -5,12 +5,12 @@
 window.addEventListener("DOMContentLoaded", start);
 
 const Animal = {
-    name: "-hei",
-    desc: "-no",
-    type: "ok",
-    age:0
+    name: "-hei-",
+    desc: "-no-",
+    type: "-ok-",
+    age: 0
 
-}
+};
 
 const allAnimals = [];
     
@@ -41,7 +41,7 @@ function prepareObjects( jsonData ) {
 
         const firstSpace = fullname.indexOf(" ");
         const secondSpace = fullname.indexOf(" ", firstSpace + 1);
-        const lastSpace = fullname.lastindexOf(" ");
+        const lastSpace = fullname.lastIndexOf(" ");
 
         const name = fullname.substring(0,firstSpace);
         const desc = fullname.substring(secondSpace + 1,lastSpace);

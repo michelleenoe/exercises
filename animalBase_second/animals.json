@@ -1,38 +1,26 @@
 [
     {
-        "name": "Mandu",
-        "desc": "the amazing",
-        "type": "cat",
+        "fullname": "Mandu the amazing cat",
         "age": 10
     },
     {
-        "name": "Mia",
-        "desc": "the black",
-        "type": "cat",
+        "fullname": "Mia the black cat",
         "age": 10
     },
     {
-        "name": "Leeloo",
-        "desc":"the growing",
-        "type":"dog",
+        "fullname": "Leeloo the growing dog",
         "age": 3
     },
     {
-        "name": "Toothless",
-        "desc": "the trained",
-        "type":"dragon",
+        "fullname": "Toothless the trained dragon",
         "age": 14
     },
     {
-        "name": "ScoobyDoo",
-        "desc": "the wondering",
-        "type": "dog",
+        "fullname": "ScoobyDoo the wondering dog",
         "age": 58
     },
     {
-        "name": "Horsey",
-        "desc":"the horsing",
-        "type":"horse",
+        "fullname": "Horsey the horsing horse",
         "age": 10
     }
 ]
