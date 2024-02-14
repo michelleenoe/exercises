@@ -107,46 +107,52 @@ function isDog(animal) {
 
 function selectSort (event) {
     const sortBy = event.target.dataset.sort;
-    console.log(`User selected ${sortBy}`);
-    sortList(sortBy);
-}
-
-function sortList(sortBy) {
-    let sortedList = allAnimals;
+    const sortDir = event.target.dataset.sortDirection;
 
 
-    if ( sortBy === "name") {
-        sortedList = sortedList.sort(sortByName);
-    
-    } else if (sortBy === "type") {
-        sortedList = sortedList.sort(sortByType);
+    //toggle the direction 
+
+    if ( sortDir === "asc") {
+        event.target.dataset.sortDirection = "desc";
+    } else {
+        event.target.dataset.sortDirection = "asc";
     }
 
+
+    console.log(`User selected ${sortDir}`);
+    sortList(sortBy, sortDir);
+}
+
+function sortList(sortBy, sortDir) {
+    let sortedList = allAnimals;
+    // -1 = high to low
+    // 1 = low to high
+    let direction = 1;
+    if (sortDir === "desc") {
+        direction = -1;
+    } 
+    
+    else {
+        direction = 1;
+    }
+
+
+    sortedList = sortedList.sort(sortByProperty);
+
+    
+    function sortByProperty (animalA, animalB) {
+        if (animalA[sortBy] < animalB[sortBy]) {
+            //sort from low to high
+            return -1 * direction;
+         }
+            else {
+            return 1 * direction;
+            
+     }
+        
+    }
     displayList(sortedList);
 
-}
-
-
-function sortByName (animalA, animalB) {
-    if (animalA.name < animalB.name) {
-        return -1;
-     }
-        else {
-        return 1;
-        
-        }
-    
-}
-
-function sortByType (animalA, animalB) {
-    if (animalA.type < animalB.type) {
-        return -1;
-     }
-        else {
-        return 1;
-        
-        }
-    
 }
 
 
