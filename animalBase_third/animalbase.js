@@ -12,23 +12,27 @@ const Animal = {
     age: 0
 };
 
-let filterBy = "all";
+const settings = {
+    filter: "all",
+    sortBy: "name",
+    sortDir: "asc",
+}
 
 function start() {
     console.log("ready");
 
     // TODO: Add event-listeners to filter and sort buttons
-registerButtons();
+    registerButtons();
     loadJSON();
 }
-function registerButtons () {
-document.querySelectorAll("[data-action='filter']")
-.forEach(button=> button.addEventListener("click", selectFilter));
+function registerButtons() {
+    document.querySelectorAll("[data-action='filter']")
+        .forEach(button => button.addEventListener("click", selectFilter));
 
     document.querySelectorAll("[data-action='sort']")
-    .forEach(button=> button.addEventListener("click", selectSort));
-    
-    }
+        .forEach(button => button.addEventListener("click", selectSort));
+
+}
 
 
 
@@ -60,35 +64,34 @@ function preapareObject(jsonObject) {
     return animal;
 }
 
-function selectFilter (event) {
+function selectFilter(event) {
     const filter = event.target.dataset.filter;
     console.log(`User selected ${filter}`);
     setFilter(filter);
 }
 
 
-function setFilter (filter) {
-    filterBy = filter;
+function setFilter(filter) {
+    settings.filterBy = filter;
     buildList()
 }
 
 function filterList(filteredList) {
     //default to all 
-    let filteredList = allAnimals;
-    
-    if (filterBy === "cat") {
+
+    if (settings.filterBy === "cat") {
         //create a filtered list of only cats 
         filteredList = allAnimals.filter(isCat);
-    } else if (filterBy === "dog") {
+    } else if (settings.filterBy === "dog") {
         //create a filtered list of only dogs
         filteredList = allAnimals.filter(isDog);
     }
     //create a filtered list of only dragons 
-    else if (filterBy ==="dragon") {
+    else if (settings.filterBy === "dragon") {
         filteredList = allAnimals.filter(isDragon);
     }
-        //create a filtered list of only horses 
-    else if (filterBy === "horse") {
+    //create a filtered list of only horses 
+    else if (settings.filterBy === "horse") {
         filteredList = allAnimals.filter(isHorse);
     }
     return filteredList;
@@ -113,14 +116,14 @@ function isDog(animal) {
     return animal.type === "dog";
 }
 
-function selectSort (event) {
+function selectSort(event) {
     const sortBy = event.target.dataset.sort;
     const sortDir = event.target.dataset.sortDirection;
 
 
     //toggle the direction 
 
-    if ( sortDir === "asc") {
+    if (sortDir === "asc") {
         event.target.dataset.sortDirection = "desc";
     } else {
         event.target.dataset.sortDirection = "asc";
@@ -128,40 +131,56 @@ function selectSort (event) {
 
 
     console.log(`User selected ${sortDir}`);
-    sortList(sortBy, sortDir);
+    setSort(sortBy, sortDir);
 }
 
-function sortList(sortBy, sortDir) {
-    let sortedList = allAnimals;
+function setSort(sortBy, sortDir) {
+    settings.sortBy = sortBy;
+    settings.sortDir = sortDir;
+    buildList();
+}
+
+    function sortList(sortedList) {
+    // let sortedList = allAnimals;
     // -1 = high to low
     // 1 = low to high
-    let direction = 1;
-    if (sortDir === "desc") {
+        let direction = 1;
+     if (settings.sortDir === "desc") {
         direction = -1;
-    } 
-    
-    else {
-        direction = 1;
-    }
+        }
+
+        else {
+        settings.direction = 1;
+     }
 
 
     sortedList = sortedList.sort(sortByProperty);
 
-    
-    function sortByProperty (animalA, animalB) {
-        if (animalA[sortBy] < animalB[sortBy]) {
+
+    function sortByProperty(animalA, animalB) {
+        if (animalA[settings.sortBy] < animalB[settings.sortBy]) {
             //sort from low to high
             return -1 * direction;
-         }
-            else {
+        }
+        else {
             return 1 * direction;
-            
-     }
-        
+
+        }
+
     }
-    displayList(sortedList);
+
+    return sortedList;
 
 }
+
+
+function buildList() {
+    const currentList = filterList(allAnimals);
+    const sortedList = sortList(currentList);
+    displayList(currentList);
+}
+
+
 
 
 function displayList(animals) {
@@ -185,10 +204,3 @@ function displayAnimal(animal) {
     // append clone to list
     document.querySelector("#list tbody").appendChild(clone);
 }
-
-function buildList () {
-    const currentList = filterList(allAnimals);
-    const sortedList = sortList(currentList);
-    displayList(currentList);
-}
-
