@@ -12,6 +12,8 @@ const Animal = {
     age: 0
 };
 
+let filterBy = "all";
+
 function start() {
     console.log("ready");
 
@@ -61,10 +63,16 @@ function preapareObject(jsonObject) {
 function selectFilter (event) {
     const filter = event.target.dataset.filter;
     console.log(`User selected ${filter}`);
-    filterList(filter);
+    setFilter(filter);
 }
 
-function filterList(filterBy) {
+
+function setFilter (filter) {
+    filterBy = filter;
+    buildList()
+}
+
+function filterList(filteredList) {
     //default to all 
     let filteredList = allAnimals;
     
@@ -83,7 +91,7 @@ function filterList(filterBy) {
     else if (filterBy === "horse") {
         filteredList = allAnimals.filter(isHorse);
     }
-    displayList(filteredList);
+    return filteredList;
 }
 
 
@@ -178,4 +186,9 @@ function displayAnimal(animal) {
     document.querySelector("#list tbody").appendChild(clone);
 }
 
+function buildList () {
+    const currentList = filterList(allAnimals);
+    const sortedList = sortList(currentList);
+    displayList(currentList);
+}
 
