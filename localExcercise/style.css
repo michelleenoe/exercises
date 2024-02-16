@@ -1,0 +1,33 @@
+html {
+    --bg: #fff; 
+    --text: #000; 
+    background: var(--bg);
+    color: var(--text);
+  }
+  
+  html[data-theme="dark"] {
+    --bg: #000; 
+    --text: #fff; 
+  }
+  
+  html[data-theme="colorful"] {
+    --bg: #8a2be2; 
+    --text: #e6e6fa;
+
+  }
+  
+
+  button {
+    background-color: var(--text);
+    color: var(--bg);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: var(--bg);
+    color: var(--text);
+  }
+  
